@@ -1,26 +1,38 @@
 
 | CS-665       | Software Design & Patterns |
-|--------------|----------------------------|
-| Name         | FIRST_NAME LAST_NAME       |
-| Date         | MM/DD/YYYY                 |
-| Course       | Fall / Spring / Summer     |
-| Assignment # |                            |
+|--------------|------------|
+| Name         | XINXIAN WANG |
+| Date         | 02/03/1998 |
+| Course       | Spring     |
+| Assignment 2 |            |
 
 # Assignment Overview
-Please add a paragraph or two overviewing the objectives of the assignment.
+- The job objective is to develop a notification system that notifies drivers of delivery requests. Upon receipt of a product delivery order from the store, a delivery request must be generated and sent to all available drivers.
 # Implementation Description 
 
 
 For each assignment, please answer the following:
 
 - Explain the level of flexibility in your implementation, including how new object types can
-be easily added or removed in the future.
+be easily added or removed in the future. 
+<br>**Sol.** 
+<br>The requirement of this task is to develop a notification system that would send delivery notifications from the system to the drivers. I designed two interfaces, Observer for updating delivery requests and Subject for registering, removing, and notifying drivers. The implementation is designed to be flexible so that new object types can be added or removed in the future. For example, if we need to add a new observer or subject, we can do so by implementing the observer and subject interfaces separately. Likewise, if we need to add a new request type, we can simply call the setOrder() method.
+<br>  <br>
 - Discuss the simplicity and understandability of your implementation, ensuring that it is
 easy for others to read and maintain.
+<br>**Sol.**
+<br>The code is designed to be simple and easy to understand, with clear, easy-to-understand variable names and comments. Duplicate code is avoided by decomposing common functionality into reusable components, such as observer and body interfaces, which are implemented by different concrete classes as needed.
+<br>  <br>
 - Describe how you have avoided duplicated code and why it is important.
-- If applicable, mention any design patterns you have used and explain why they were
-chosen.
+<br>**Sol.**
+<br>In this implementation, we facilitate code reuse by implementing the observer and body interfaces, thus avoiding duplicate code. The observer interface defines the update () method for notifying observers of changes to the subject, while the subject interface defines the registerObserver(), removeObserver(), and notifyObserver() methods for managing the list of observers and notifying them of changes. By implementing these interfaces, we can reuse the same code for multiple observers and subjects. For example, the store class implements the subject interface and maintains a list of observers, which can include any object that implements the observer interface.
+<br>  <br>
+- If applicable, mention any design patterns you have used and explain why they were chosen.
+<br>**Sol.**
+<br>My implementation uses the Observer pattern in the design pattern. By using the Observer pattern, we can easily add or remove observers without affecting the rest of the system. The Shop maintains a list of registered observers and notifies them of new orders or other events by calling their update () method. the Driver class is an example of an observer that can be registered to the Shop to receive notifications of new orders.
 
+# Compile and execute
+- Codes are in the folder of src/main/java/edu.bu.met.cs665/Assignment2. Junit codes are in the fold of src/test/java/edu.bu.met.cs665/Assignment2. And the application contains two strategy interfaces: Interface Subject and Interface Observer. The implementation class of Subject is class Shop. The implementation class of Observer is class Driver. In addition, Main Class is used to start the program and test my solution by creating an instance of Shop, a Delivery Request, and a minimum of 5 Driver objects. During testing, broadcast a single Delivery Request and send notifications to all Drivers regarding the delivery.
 
 # Maven Commands
 
